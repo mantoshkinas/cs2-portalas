@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CS2 Portalas</title>
+<style>
+:root{--bg:#e9ecf0;--panel:#fff;--head:#2c3a4d;--head2:#222d3b;--text:#1d2733;--mut:#6b7886;--line:#d9dee4;--acc:#3b8fe0;--win:#2e9e4f;--lose:#d04a3f;--live:#e5473b;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161b22;--panel:#202833;--head:#2c3a4d;--head2:#1a222d;--text:#e4e9ef;--mut:#8b98a7;--line:#2f3a48;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161b22;--panel:#202833;--head:#2c3a4d;--head2:#1a222d;--text:#e4e9ef;--mut:#8b98a7;--line:#2f3a48;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.4 Verdana,Tahoma,sans-serif;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:inherit;text-decoration:none}
+.top{background:var(--head2)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 10px}
+.bar{display:flex;align-items:center;gap:14px;height:46px;color:#fff}
+.logo{font-weight:900;font-size:20px;letter-spacing:1px}.logo b{color:var(--acc)}
+.bar .sp{flex:1}
+.bar input{background:#0f151d;border:1px solid #38465a;color:#fff;padding:5px 9px;border-radius:3px;width:150px;font-size:12px}
+.bar button{background:none;border:1px solid #38465a;color:#fff;border-radius:3px;padding:4px 8px;cursor:pointer}
+nav{background:var(--head)}
+nav .wrap{display:flex;overflow-x:auto}
+nav a{color:#cfd8e3;padding:11px 14px;font-size:13px;white-space:nowrap;font-weight:bold;text-transform:uppercase}
+nav a.on,nav a:hover{color:#fff;background:#3a4b63;box-shadow:inset 0 -3px var(--acc)}
+.live{background:var(--head2);border-top:1px solid #38465a;color:#cfd8e3;font-size:12px}
+.live .wrap{display:flex;gap:10px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+.lm{flex:0 0 auto;background:#2a384b;border-radius:3px;padding:6px 10px;min-width:170px}
+.lm i{color:var(--live);font-style:normal;font-weight:bold;font-size:10px}
+.lm div{display:flex;justify-content:space-between;color:#fff}
+.grid{display:grid;grid-template-columns:200px 1fr 260px;gap:12px;margin:12px auto}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:3px;margin-bottom:12px;overflow:hidden}
+.box h3{margin:0;padding:8px 12px;font-size:12px;text-transform:uppercase;background:var(--head);color:#fff;letter-spacing:.5px}
+.box h3 small{float:right;opacity:.7;font-weight:normal}
+.hero{height:200px;background:linear-gradient(135deg,#1e3a5f,#3b8fe0 60%,#f2a33a);color:#fff;display:flex;align-items:flex-end;padding:16px;margin-bottom:12px;border-radius:3px}
+.hero h2{margin:0;font-size:20px;text-shadow:0 1px 4px #0008}.hero span{font-size:12px;opacity:.85}
+.news a{display:block;padding:9px 12px;border-bottom:1px solid var(--line)}
+.news a:hover{background:rgba(59,143,224,.1)}
+.news small,.mut{color:var(--mut);font-size:11px}
+.tabs{display:flex;border-bottom:1px solid var(--line)}
+.tabs button{flex:1;background:none;border:0;padding:9px;color:var(--mut);font-weight:bold;cursor:pointer;font-size:12px;text-transform:uppercase}
+.tabs button.on{color:var(--text);box-shadow:inset 0 -3px var(--acc)}
+.row{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line)}
+.row:hover{background:rgba(59,143,224,.1)}
+.t{width:46px;color:var(--mut);font-size:12px}
+.tm{flex:1;display:flex;align-items:center;gap:6px}.tm.r{justify-content:flex-end;text-align:right}
+.dot{width:16px;height:16px;border-radius:50%;flex:0 0 16px}
+.sc{font-weight:bold;min-width:56px;text-align:center}
+.w{color:var(--win)}.l{color:var(--lose)}
+.ev{width:100px;text-align:right;font-size:11px;color:var(--mut)}
+@media(max-width:560px){.ev{display:none}}
+.rk{display:flex;align-items:center;gap:8px;padding:7px 12px;border-bottom:1px solid var(--line)}
+.rk .n{width:22px;color:var(--mut)}.rk .p{margin-left:auto;color:var(--mut);font-size:12px}
+.pl{display:flex;justify-content:space-between;padding:7px 12px;border-bottom:1px solid var(--line)}
+.up{color:var(--win)}.dn{color:var(--lose)}
+footer{text-align:center;color:var(--mut);font-size:11px;padding:16px}
+:root{--gl:rgba(255,255,255,.5);--gb:rgba(255,255,255,.7);--gs:0 8px 32px rgba(40,70,120,.15);--hv:rgba(59,143,224,.14)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--gl:rgba(32,42,58,.45);--gb:rgba(255,255,255,.12);--gs:0 8px 32px rgba(0,0,0,.4);--hv:rgba(120,180,255,.12)}}
+:root[data-theme="dark"]{--gl:rgba(32,42,58,.45);--gb:rgba(255,255,255,.12);--gs:0 8px 32px rgba(0,0,0,.4);--hv:rgba(120,180,255,.12)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--bg)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(520px 420px at 10% 8%,rgba(59,143,224,.55),transparent 70%),radial-gradient(480px 460px at 92% 22%,rgba(168,85,247,.42),transparent 70%),radial-gradient(520px 420px at 50% 100%,rgba(242,163,58,.38),transparent 70%)}
+.top,nav,.live{background:var(--gl);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border-bottom:1px solid var(--gb);color:var(--text)}
+.top{position:sticky;top:0;z-index:20}
+.bar{color:var(--text)}
+.bar input{background:var(--gl);border:1px solid var(--gb);color:var(--text);border-radius:999px;padding:7px 14px;backdrop-filter:blur(10px)}
+.bar input::placeholder{color:var(--mut)}
+.bar button{border:1px solid var(--gb);color:var(--text);background:var(--gl);border-radius:999px;padding:6px 11px}
+nav a{color:var(--mut);border-radius:999px;margin:6px 2px;padding:6px 13px}
+nav a.on,nav a:hover{color:var(--text);background:var(--gl);box-shadow:inset 0 0 0 1px var(--gb)}
+.live{border-top:0}.lm{background:var(--gl);border:1px solid var(--gb);border-radius:14px;color:var(--text);box-shadow:var(--gs)}.lm div{color:var(--text)}
+.box{background:var(--gl);backdrop-filter:blur(20px) saturate(170%);-webkit-backdrop-filter:blur(20px) saturate(170%);border:1px solid var(--gb);border-radius:18px;box-shadow:var(--gs)}
+.box h3{background:transparent;color:var(--text);border-bottom:1px solid var(--gb);padding:12px 16px}
+.hero{border-radius:22px;border:1px solid var(--gb);box-shadow:var(--gs);background:linear-gradient(135deg,rgba(30,58,95,.75),rgba(59,143,224,.7) 55%,rgba(168,85,247,.6))}
+.news a,.row,.rk,.pl{border-bottom:1px solid var(--gb)}
+.news a:hover,.row:hover{background:var(--hv)}
+.tabs{border-bottom:1px solid var(--gb);padding:8px;gap:6px}
+.tabs button{border-radius:999px;box-shadow:none}
+.tabs button.on{background:var(--gl);color:var(--text);box-shadow:inset 0 0 0 1px var(--gb)}
+.dot{box-shadow:none}
+:root{--bg:#141a22;--panel:#1c2530;--text:#e4e9ef;--mut:#8b98a7;--line:#2a3544;--head:#2c3a4d;--gl:rgba(28,37,48,.72);--gb:rgba(255,255,255,.1);--gs:0 4px 18px rgba(0,0,0,.35);--hv:rgba(59,143,224,.12);color-scheme:dark}
+:root[data-theme="light"]{--bg:#e9ecf0;--panel:#fff;--text:#1d2733;--mut:#6b7886;--line:#d9dee4;--gl:rgba(255,255,255,.72);--gb:rgba(0,0,0,.08);--gs:0 4px 18px rgba(40,70,120,.12);--hv:rgba(59,143,224,.1);color-scheme:light}
+body::before{display:none}
+.box{background:var(--panel);backdrop-filter:none;-webkit-backdrop-filter:none;border:1px solid var(--line);border-radius:8px;box-shadow:none}
+.box h3{background:var(--head);color:#fff;border-bottom:0;padding:9px 12px}
+.news a,.row,.rk,.pl{border-bottom:1px solid var(--line)}
+.lm{border-radius:8px;box-shadow:none}
+.hero{border-radius:12px;background:linear-gradient(135deg,rgba(30,58,95,.92),rgba(59,143,224,.85));box-shadow:var(--gs)}
+.tabs{border-bottom:1px solid var(--line);padding:0;gap:0}
+.tabs button{border-radius:0}
+.tabs button.on{background:transparent;box-shadow:inset 0 -3px var(--acc)}
+nav a{border-radius:6px}
+nav a.on,nav a:hover{background:var(--hv);box-shadow:inset 0 -3px var(--acc);color:var(--text)}
+.bar input{border-radius:6px}.bar button{border-radius:6px}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap bar">
+<div class="logo">CS<b>2</b>PORTALAS</div><div class="sp"></div>
+<input placeholder="Paieška…"><button id="th">◐</button>
+</div></div>
+<nav><div class="wrap">
+<a class="on" href="#">Pradžia</a><a href="#">Naujienos</a><a href="#">Rungtynės</a><a href="#">Rezultatai</a><a href="#">Turnyrai</a><a href="#">Reitingas</a><a href="#">Statistika</a><a href="#">Forumas</a>
+</div></nav>
+<div class="live"><div class="wrap">
+<div class="lm"><i>● LIVE</i><div><span>Vitality</span><b>11</b></div><div><span>NAVI</span><b>9</b></div></div>
+<div class="lm"><i>● LIVE</i><div><span>FaZe</span><b>1</b></div><div><span>G2</span><b>0</b></div></div>
+<div class="lm"><span class="mut">20:30</span><div><span>Spirit</span><b>–</b></div><div><span>MOUZ</span><b>–</b></div></div>
+<div class="lm"><span class="mut">22:00</span><div><span>Astralis</span><b>–</b></div><div><span>Liquid</span><b>–</b></div></div>
+</div></div>
+
+<div class="wrap grid">
+<aside>
+<div class="box"><h3>Turnyrai <small>aktyvūs</small></h3>
+<div class="news"><a href="#">Major Atranka<br><small>Lapkričio 2–8</small></a><a href="#">BLAST Open<br><small>Lapkričio 10–16</small></a><a href="#">ESL Pro League<br><small>Lapkričio 20–30</small></a></div></div>
+<div class="box"><h3>Top žaidėjai</h3>
+<div class="pl"><span>ZywOo</span><b>1.31</b></div><div class="pl"><span>donk</span><b>1.27</b></div><div class="pl"><span>m0NESY</span><b>1.22</b></div><div class="pl"><span>ropz</span><b>1.15</b></div><div class="pl"><span>sh1ro</span><b>1.14</b></div></div>
+</aside>
+
+<main>
+<div class="hero"><div><h2>Vitality ir NAVI kovoja dėl vietos finale</h2><span>Naujienos · prieš 12 min.</span></div></div>
+<div class="box"><div class="tabs"><button class="on" data-t="m">Rungtynės</button><button data-t="r">Rezultatai</button></div>
+<div id="m">
+<div class="row"><span class="t">20:30</span><span class="tm r">Spirit <i class="dot" style="background:#7fa6e8"></i></span><span class="sc mut">vs</span><span class="tm"><i class="dot" style="background:#4caf6a"></i> MOUZ</span><span class="ev">Major Atranka</span></div>
+<div class="row"><span class="t">22:00</span><span class="tm r">Astralis <i class="dot" style="background:#d04a3f"></i></span><span class="sc mut">vs</span><span class="tm"><i class="dot" style="background:#2b4a8b"></i> Liquid</span><span class="ev">Major Atranka</span></div>
+<div class="row"><span class="t">Rytoj</span><span class="tm r">G2 <i class="dot" style="background:#e5473b"></i></span><span class="sc mut">vs</span><span class="tm"><i class="dot" style="background:#f2a33a"></i> Vitality</span><span class="ev">BLAST Open</span></div>
+<div class="row"><span class="t">Rytoj</span><span class="tm r">FURIA <i class="dot" style="background:#222"></i></span><span class="sc mut">vs</span><span class="tm"><i class="dot" style="background:#9b59b6"></i> Falcons</span><span class="ev">BLAST Open</span></div>
+</div>
+<div id="r" hidden>
+<div class="row"><span class="t">Baigta</span><span class="tm r w">Vitality <i class="dot" style="background:#f2a33a"></i></span><span class="sc"><span class="w">2</span> : <span class="l">0</span></span><span class="tm l"><i class="dot" style="background:#7fa6e8"></i> Spirit</span><span class="ev">Major Atranka</span></div>
+<div class="row"><span class="t">Baigta</span><span class="tm r l">Liquid <i class="dot" style="background:#2b4a8b"></i></span><span class="sc"><span class="l">1</span> : <span class="w">2</span></span><span class="tm w"><i class="dot" style="background:#4caf6a"></i> MOUZ</span><span class="ev">Major Atranka</span></div>
+<div class="row"><span class="t">Baigta</span><span class="tm r w">NAVI <i class="dot" style="background:#f6d54a"></i></span><span class="sc"><span class="w">2</span> : <span class="l">1</span></span><span class="tm l"><i class="dot" style="background:#e5473b"></i> G2</span><span class="ev">BLAST Open</span></div>
+</div></div>
+<div class="box"><h3>Naujausios naujienos</h3><div class="news">
+<a href="#">Treneris palieka komandą po nesėkmingo sezono<br><small>prieš 1 val. · 48 komentarai</small></a>
+<a href="#">Atnaujinimas: pakeisti žemėlapių pool'o pakeitimai<br><small>prieš 3 val. · 120 komentarų</small></a>
+<a href="#">Naujas rekordas: 40 nužudymų vienoje rungtynėse<br><small>prieš 5 val. · 76 komentarai</small></a>
+<a href="#">Turnyro organizatoriai paskelbė prizų fondą<br><small>vakar · 31 komentaras</small></a>
+</div></div>
+</main>
+
+<aside>
+<div class="box"><h3>Komandų reitingas <small>spalio 27</small></h3>
+<div class="rk"><span class="n">1</span><i class="dot" style="background:#f2a33a"></i>Vitality<span class="p">1000</span></div>
+<div class="rk"><span class="n">2</span><i class="dot" style="background:#f6d54a"></i>NAVI<span class="p">874</span></div>
+<div class="rk"><span class="n">3</span><i class="dot" style="background:#7fa6e8"></i>Spirit<span class="p">812</span></div>
+<div class="rk"><span class="n">4</span><i class="dot" style="background:#4caf6a"></i>MOUZ<span class="p">790</span></div>
+<div class="rk"><span class="n">5</span><i class="dot" style="background:#e5473b"></i>G2<span class="p">755</span></div>
+<div class="rk"><span class="n">6</span><i class="dot" style="background:#9b59b6"></i>Falcons<span class="p">701</span></div>
+<div class="rk"><span class="n">7</span><i class="dot" style="background:#222"></i>FURIA<span class="p">660</span></div>
+</div>
+<div class="box"><h3>Forumo temos</h3><div class="news">
+<a href="#">Kas laimės Major?<br><small>312 atsakymų</small></a>
+<a href="#">Geriausia pelė 2026<br><small>98 atsakymai</small></a></div></div>
+</aside>
+</div>
+<footer>CS2 Portalas · demonstracinis prototipas · duomenys išgalvoti</footer>
+<script>
+document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){
+document.querySelectorAll('.tabs button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');
+document.getElementById('m').hidden=b.dataset.t!=='m';document.getElementById('r').hidden=b.dataset.t!=='r'}});
+document.getElementById('th').onclick=function(){var d=document.documentElement;
+d.dataset.theme=(d.dataset.theme==='light')?'dark':'light'};
+</script>
+<script>
+(function(){
+function esc(t){var d=document.createElement('div');d.textContent=t==null?'':t;return d.innerHTML}
+function col(n){var h=0;for(var i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))%360;return 'hsl('+h+',55%,55%)'}
+function url(l){return /^http/.test(l)?l:'https://www.hltv.org'+l}
+function tm(t){if(!t)return 'TBA';var d=new Date(t),n=new Date(),h=d.toLocaleTimeString('lt-LT',{hour:'2-digit',minute:'2-digit'});return d.toDateString()===n.toDateString()?h:d.toLocaleDateString('lt-LT',{month:'2-digit',day:'2-digit'})+' '+h}
+function box(title){var a=document.querySelectorAll('.box h3');for(var i=0;i<a.length;i++)if(a[i].textContent.indexOf(title)===0)return a[i].parentNode}
+fetch('data/data.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){
+if(d.news&&d.news.length){
+var nb=box('Naujausios');if(nb)nb.querySelector('.news').innerHTML=d.news.map(function(n){return '<a href="'+esc(url(n.link))+'" target="_blank" rel="noopener">'+esc(n.title)+(n.date?'<br><small>'+esc(new Date(n.date).toLocaleDateString('lt-LT'))+'</small>':'')+'</a>'}).join('');
+var h=document.querySelector('.hero');if(h){h.innerHTML='<div><h2>'+esc(d.news[0].title)+'</h2><span>HLTV naujiena</span></div>';h.style.cursor='pointer';h.onclick=function(){window.open(url(d.news[0].link),'_blank')}}}
+if(d.matches&&d.matches.length){
+document.getElementById('m').innerHTML=d.matches.map(function(m){return '<div class="row"><span class="t">'+(m.live?'<b style="color:var(--live)">LIVE</b>':esc(tm(m.date)))+'</span><span class="tm r">'+esc(m.team1)+' <i class="dot" style="background:'+col(m.team1)+'"></i></span><span class="sc mut">vs</span><span class="tm"><i class="dot" style="background:'+col(m.team2)+'"></i> '+esc(m.team2)+'</span><span class="ev">'+esc(m.event)+'</span></div>'}).join('');
+document.querySelector('.live .wrap').innerHTML=d.matches.slice(0,8).map(function(m){return '<div class="lm">'+(m.live?'<i>● LIVE</i>':'<span class="mut">'+esc(tm(m.date))+'</span>')+'<div><span>'+esc(m.team1)+'</span></div><div><span>'+esc(m.team2)+'</span></div></div>'}).join('')}
+if(d.results&&d.results.length){
+document.getElementById('r').innerHTML=d.results.map(function(r){var p=String(r.result||'').split('-').map(function(x){return parseInt(x,10)}),a=p[0],b=p[1],w1=a>b,w2=b>a;return '<div class="row"><span class="t">Baigta</span><span class="tm r '+(w1?'w':'l')+'">'+esc(r.team1)+' <i class="dot" style="background:'+col(r.team1)+'"></i></span><span class="sc"><span class="'+(w1?'w':'l')+'">'+esc(a)+'</span> : <span class="'+(w2?'w':'l')+'">'+esc(b)+'</span></span><span class="tm '+(w2?'w':'l')+'"><i class="dot" style="background:'+col(r.team2)+'"></i> '+esc(r.team2)+'</span><span class="ev">'+esc(r.event)+'</span></div>'}).join('')}
+if(d.ranking&&d.ranking.length){var rb=box('Komandų');if(rb){var hh=rb.querySelector('h3').outerHTML;rb.innerHTML=hh+d.ranking.map(function(t){return '<div class="rk"><span class="n">'+esc(t.place)+'</span><i class="dot" style="background:'+col(t.team)+'"></i>'+esc(t.team)+'<span class="p">'+esc(t.points)+'</span></div>'}).join('');rb.querySelector('h3 small').textContent=d.updated?new Date(d.updated).toLocaleDateString('lt-LT'):''}}
+}).catch(function(){});
+})();
+</script>
+</body>
+</html>
