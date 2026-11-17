@@ -1,9 +1,24 @@
 {
- "updated": 1794846933944,
+ "updated": 1794875208920,
  "news": [
   {
    "title": "Short news: Week 45 ",
    "link": "/news/45999/short-news-week-45",
+   "date": 1794787200000
+  },
+  {
+   "title": "Community Awards: Vox Populi nominations open ",
+   "link": "/news/46000/community-awards-vox-populi-nominations-open",
+   "date": 1794787200000
+  },
+  {
+   "title": "Astralis announce jabbi departure ",
+   "link": "/news/46003/astralis-announce-jabbi-departure",
+   "date": 1794787200000
+  },
+  {
+   "title": "The EVPs and All-Stars of BLAST Rivals 2026 Season 2 ",
+   "link": "/news/45998/the-evps-and-all-stars-of-blast-rivals-2026-season-2",
    "date": 1794787200000
   },
   {
@@ -45,21 +60,6 @@
    "title": "BLAST to return to Hong Kong in 2027 ",
    "link": "/news/45994/blast-to-return-to-hong-kong-in-2027",
    "date": 1794700800000
-  },
-  {
-   "title": "yuurih: \"I really want to thank Falcons for their fair play\" ",
-   "link": "/news/45992/yuurih-i-really-want-to-thank-falcons-for-their-fair-play",
-   "date": 1794614400000
-  },
-  {
-   "title": "BLAST Rivals semi-finals as they happened ",
-   "link": "/news/45988/blast-rivals-semi-finals-as-they-happened",
-   "date": 1794614400000
-  },
-  {
-   "title": "FURIA sweep Falcons to reach Hong Kong final ",
-   "link": "/news/45990/furia-sweep-falcons-to-reach-hong-kong-final",
-   "date": 1794614400000
   }
  ],
  "matches": [],
