@@ -1,9 +1,19 @@
 {
- "updated": 1795170275734,
+ "updated": 1795200424611,
  "news": [
   {
    "title": "Short news: Week 45 ",
    "link": "/news/45999/short-news-week-45",
+   "date": 1795132800000
+  },
+  {
+   "title": "Infographic: PGL Major Singapore ",
+   "link": "/news/46020/infographic-pgl-major-singapore",
+   "date": 1795132800000
+  },
+  {
+   "title": "Support of the Year replaces Anchor at HLTV Awards 2026 ",
+   "link": "/news/45980/support-of-the-year-replaces-anchor-at-hltv-awards-2026",
    "date": 1795132800000
   },
   {
@@ -49,16 +59,6 @@
   {
    "title": "Stake announces six Ranked events with open qualifiers and $150,000 prize pool for 2027 ",
    "link": "/news/46006/stake-announces-six-ranked-events-with-open-qualifiers-and-150000-prize-pool-for-2027",
-   "date": 1794873600000
-  },
-  {
-   "title": "BC.Game, TYLOO headline ZOWIE eXTREMESLAND Asia Open team list ",
-   "link": "/news/46005/bcgame-tyloo-headline-zowie-extremesland-asia-open-team-list",
-   "date": 1794873600000
-  },
-  {
-   "title": "IEM Beijing to return for 2027 and 2028 ",
-   "link": "/news/46004/iem-beijing-to-return-for-2027-and-2028",
    "date": 1794873600000
   }
  ],
