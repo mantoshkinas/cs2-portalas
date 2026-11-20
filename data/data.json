@@ -1,10 +1,20 @@
 {
- "updated": 1795124195845,
+ "updated": 1795142020890,
  "news": [
   {
    "title": "Short news: Week 45 ",
    "link": "/news/45999/short-news-week-45",
-   "date": 1794960000000
+   "date": 1795046400000
+  },
+  {
+   "title": "PGL announce Singapore Major talent lineup ",
+   "link": "/news/46014/pgl-announce-singapore-major-talent-lineup",
+   "date": 1795046400000
+  },
+  {
+   "title": "Vitality to shut down academy project ",
+   "link": "/news/46013/vitality-to-shut-down-academy-project",
+   "date": 1795046400000
   },
   {
    "title": "Media: Inner Circle owner detained in Italy ",
@@ -50,16 +60,6 @@
    "title": "IEM Beijing to return for 2027 and 2028 ",
    "link": "/news/46004/iem-beijing-to-return-for-2027-and-2028",
    "date": 1794873600000
-  },
-  {
-   "title": "Cast your vote for the Major MVP medal design ",
-   "link": "/news/46001/cast-your-vote-for-the-major-mvp-medal-design",
-   "date": 1794873600000
-  },
-  {
-   "title": "Community Awards: Vox Populi nominations open ",
-   "link": "/news/46000/community-awards-vox-populi-nominations-open",
-   "date": 1794787200000
   }
  ],
  "matches": [],
